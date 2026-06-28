@@ -1,0 +1,193 @@
+{% doc %}
+  @prompt
+    make a basic block for logo image that when added in a section is always equal in height to prevent one being bigger than other logo
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-logo-block-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-logo-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: {{ block.settings.alignment }};
+    width: 100%;
+    height: {{ block.settings.logo_height }}px;
+  }
+
+  .ai-logo-link-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  .ai-logo-image-{{ ai_gen_id }} {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: auto;
+    object-fit: {{ block.settings.object_fit }};
+  }
+
+  .ai-logo-placeholder-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .ai-logo-placeholder-{{ ai_gen_id }} svg {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: auto;
+  }
+
+  .ai-logo-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-logo-wrapper-{{ ai_gen_id }} {
+      height: {{ block.settings.logo_height_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-logo-block-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-logo-wrapper-{{ ai_gen_id }}">
+    {% if block.settings.logo_image %}
+      {% if block.settings.logo_link %}
+        <a href="{{ block.settings.logo_link }}" class="ai-logo-link-{{ ai_gen_id }}">
+          <img
+            src="{{ block.settings.logo_image | image_url: width: 600 }}"
+            alt="{{ block.settings.logo_image.alt | default: shop.name | escape }}"
+            class="ai-logo-image-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.logo_image.width }}"
+            height="{{ block.settings.logo_image.height }}"
+          >
+        </a>
+      {% else %}
+        <img
+          src="{{ block.settings.logo_image | image_url: width: 600 }}"
+          alt="{{ block.settings.logo_image.alt | default: shop.name | escape }}"
+          class="ai-logo-image-{{ ai_gen_id }}"
+          loading="lazy"
+          width="{{ block.settings.logo_image.width }}"
+          height="{{ block.settings.logo_image.height }}"
+        >
+      {% endif %}
+    {% else %}
+      <div class="ai-logo-placeholder-{{ ai_gen_id }}">
+        {{ 'image' | placeholder_svg_tag }}
+        <div class="ai-logo-empty-state-{{ ai_gen_id }}">
+          Add your logo image
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Logo image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "url",
+      "id": "logo_link",
+      "label": "Logo link"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Desktop height",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "label": "Mobile height",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "object_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo image"
+    }
+  ]
+}
+{% endschema %}
