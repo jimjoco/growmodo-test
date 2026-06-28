@@ -1,0 +1,272 @@
+{% doc %}
+  @prompt
+    a 3 equal column block. each block contains a header and under it, a subtext and each column is separated by a line/border. each border has 32 gap each side, make the text left aligned
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-three-column-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-three-column__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+  }
+
+  .ai-three-column__item-{{ ai_gen_id }} {
+    padding: {{ block.settings.vertical_padding }}px {{ block.settings.gap }}px;
+    text-align: {{ block.settings.text_alignment }};
+    border-right: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-three-column__item-{{ ai_gen_id }}:last-child {
+    border-right: none;
+  }
+
+  .ai-three-column__header-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.header_spacing }}px 0;
+    font-size: {{ block.settings.header_size }}px;
+    color: {{ block.settings.header_color }};
+    font-weight: {{ block.settings.header_weight }};
+  }
+
+  .ai-three-column__subtext-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.subtext_size }}px;
+    color: {{ block.settings.subtext_color }};
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-three-column__container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-three-column__item-{{ ai_gen_id }} {
+      border-right: none;
+      border-bottom: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    }
+
+    .ai-three-column__item-{{ ai_gen_id }}:last-child {
+      border-bottom: none;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-three-column-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-three-column__container-{{ ai_gen_id }}">
+    <div class="ai-three-column__item-{{ ai_gen_id }}">
+      <h3 class="ai-three-column__header-{{ ai_gen_id }}">{{ block.settings.column_1_header }}</h3>
+      <p class="ai-three-column__subtext-{{ ai_gen_id }}">{{ block.settings.column_1_subtext }}</p>
+    </div>
+
+    <div class="ai-three-column__item-{{ ai_gen_id }}">
+      <h3 class="ai-three-column__header-{{ ai_gen_id }}">{{ block.settings.column_2_header }}</h3>
+      <p class="ai-three-column__subtext-{{ ai_gen_id }}">{{ block.settings.column_2_subtext }}</p>
+    </div>
+
+    <div class="ai-three-column__item-{{ ai_gen_id }}">
+      <h3 class="ai-three-column__header-{{ ai_gen_id }}">{{ block.settings.column_3_header }}</h3>
+      <p class="ai-three-column__subtext-{{ ai_gen_id }}">{{ block.settings.column_3_subtext }}</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Three column text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Column 1"
+    },
+    {
+      "type": "text",
+      "id": "column_1_header",
+      "label": "Header",
+      "default": "Feature one"
+    },
+    {
+      "type": "textarea",
+      "id": "column_1_subtext",
+      "label": "Subtext",
+      "default": "Share details about your product or service"
+    },
+    {
+      "type": "header",
+      "content": "Column 2"
+    },
+    {
+      "type": "text",
+      "id": "column_2_header",
+      "label": "Header",
+      "default": "Feature two"
+    },
+    {
+      "type": "textarea",
+      "id": "column_2_subtext",
+      "label": "Subtext",
+      "default": "Share details about your product or service"
+    },
+    {
+      "type": "header",
+      "content": "Column 3"
+    },
+    {
+      "type": "text",
+      "id": "column_3_header",
+      "label": "Header",
+      "default": "Feature three"
+    },
+    {
+      "type": "textarea",
+      "id": "column_3_subtext",
+      "label": "Subtext",
+      "default": "Share details about your product or service"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Column gap",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Border"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#DFDFDF"
+    },
+    {
+      "type": "header",
+      "content": "Header style"
+    },
+    {
+      "type": "range",
+      "id": "header_size",
+      "label": "Size",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "header_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "header_weight",
+      "label": "Weight",
+      "min": 400,
+      "max": 700,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Spacing below",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Subtext style"
+    },
+    {
+      "type": "range",
+      "id": "subtext_size",
+      "label": "Size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Color",
+      "default": "#333333"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Three column text"
+    }
+  ]
+}
+{% endschema %}
