@@ -1,5 +1,3 @@
-
-
 {% liquid
   assign media_count = 0
   assign media_count_mobile = 0
@@ -458,7 +456,7 @@
 
 <div
   id="Hero-{{ section.id }}"
-  class="hero{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}"
+  class="{% if section.settings.section_class != blank %}{{ section.settings.section_class }} {% endif %}hero{% if section.settings.background_color != blank %} color-custom-{{ section.id }}{% endif %}{% if section.blocks.size == 0 and section.settings.section_height == 'auto' %} hero--no-blocks-auto-height{% endif %}{% if section.settings.stack_media_on_mobile %} hero--stack-mobile{% endif %}"
   style="
     --hero-border-style: {{ section.settings.border }};
     --hero-border-width: {{ section.settings.border_width }}px;
@@ -787,6 +785,11 @@
     "groups": ["header"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "section_class",
+      "label": "Section class"
+    },
     {
       "type": "header",
       "content": "t:content.media_1"

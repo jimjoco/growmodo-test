@@ -141,3 +141,50 @@
     font-style: normal;
     font-display: swap;
 }
+
+//** Header **//
+
+.header__row {
+
+  .header-logo {
+    height: auto;
+    display: inline-block;
+
+    span {
+      font-family: 'Integral CF', sans-serif;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: .69;
+      letter-spacing: 0;
+    }
+  }
+
+  .menu-list {
+
+    .menu-list__link-title {
+      font-family: 'Satoshi', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: normal;
+      letter-spacing: 0;
+      padding: 0 12px;
+
+      svg {
+        display: inline-block;
+        margin-left: 4px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+//** Section **//
+.hero {
+
+  &.hero-main {
+
+    .hero__content-wrapper {
+      max-width: 50%;
+    }
+  }
+}
