@@ -116,6 +116,7 @@
       ],
       "name": "t:names.hero",
       "settings": {
+        "section_class": "hero-main",
         "media_type_1": "image",
         "image_1": "shopify://shop_images/banner.png",
         "media_type_2": "image",
@@ -904,7 +905,7 @@
         "icons_shape": "none",
         "section_width": "page-width",
         "gap": 12,
-        "background_color": "#F0F0F0",
+        "background_color": "#f0f0f0",
         "padding-block-start": 24,
         "padding-block-end": 24
       }
