@@ -143,7 +143,6 @@
 }
 
 //** Header **//
-
 .header__row {
 
   .header-logo {
@@ -156,6 +155,41 @@
       font-size: 32px;
       line-height: .69;
       letter-spacing: 0;
+    }
+  }
+
+  .header__column {
+
+    &.header__column--left {
+      gap: 40px;
+    }
+
+    &.header__column--right {
+      gap: 40px;
+    }
+  }
+
+  header-actions {
+    gap: 0;
+
+    .account-button {
+
+      span {
+        font-size: 0;
+      }
+    }
+  }
+
+  .search-action {
+
+    .predictive-search-form__header {
+      border: none;
+    }
+
+    .predictive-search-form__header-inner {
+      border: none;
+      background-color: #F0F0F0;
+      border-radius: 62px;
     }
   }
 
@@ -178,13 +212,280 @@
   }
 }
 
+//** Header Search Inline **//
+
+.header-search-inline {
+  position: relative;
+  flex: 1;
+  min-width: 180px;
+  max-width: 577px;
+
+  .predictive-search {
+    width: 100%;
+  }
+
+  &__header {
+    padding: 0;
+  }
+
+  &__reset {
+    @media screen and (min-width: 750px) {
+      display: none;
+    }
+  }
+
+  .predictive-search-form__content-wrapper {
+    display: none;
+  }
+
+  &:focus-within .predictive-search-form__content-wrapper {
+    display: flex;
+  }
+}
+
 //** Section **//
 .hero {
 
   &.hero-main {
+    min-height: 663px;
 
     .hero__content-wrapper {
       max-width: 50%;
+    }
+  }
+
+  .h1 {
+
+    p {
+      font-family: 'Integral CF', sans-serif;
+      font-size: 64px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+  }
+
+  .rte {
+    max-width: 545px;
+
+    p {
+      font-family: 'Satoshi', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 22px;
+    }
+  }
+
+  .button {
+    width: 210px;
+    border-radius: 62px;
+  }
+}
+
+.ui-test-product-list {
+
+  .section-resource-list__header {
+
+    h3 {
+      font-family: 'Integral CF', sans-serif;
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+  }
+
+  .resource-list {
+
+    .product-card__content {
+
+      .product-badges {
+
+        .product-badges__badge {
+          display: none;
+        }
+      }
+
+      .rte {
+
+        p {
+          font-family: 'Satoshi', sans-serif;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 1;
+          letter-spacing: 0;
+        }
+      }
+
+      .price__regular {
+
+        .price {
+          font-family: 'Satoshi', sans-serif;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: 0;
+        }
+      }
+
+      .price__sale {
+
+        .price-item--sale {
+
+          &.price {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: 0;
+          }
+        }
+
+        .price-item--regular {
+
+          &.compare-at-price {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: 0;
+            color: rgba(0, 0, 0, 0.4);
+          }
+        }
+      }
+    }
+  }
+
+  .section-resource-list__content {
+
+    a {
+      width: 218px;
+      border-radius: 62px;
+      border: 1px solid rgba(0, 0, 0, .1);
+      box-shadow: none;
+    }
+  }
+}
+
+.divider__line {
+  border-color: rgba(0, 0, 0, .1) !important;
+}
+
+.ui-test-collection-list {
+
+  .section-resource-list {
+    max-width: 1440px;
+    padding-left: 64px;
+    padding-right: 64px;
+    margin: 0 auto;
+    background-color: #F0F0F0 !important;
+    border-radius: 40px;
+  }
+
+  .resource-list {
+
+    .rte {
+
+      h2 {
+        font-family: 'Integral CF', sans-serif;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+    }
+  }
+
+  .collection-card {
+
+    .collection-card__content{
+
+      p {
+        font-family: 'Satoshi', sans-serif;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+    }
+  }
+}
+
+//** Email signup **//
+.email-signup {
+
+  &.section-background {
+    z-index: 1;
+  }
+
+  h2 {
+    font-family: 'Integral CF', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 45px;
+    letter-spacing: 0;
+  }
+}
+
+//** Footer **//
+
+.footer-content {
+  padding-top: 140px;
+  margin-top: -90px;
+
+  .group-block-content {
+
+    .group-block {
+
+      &:first-of-type {
+
+        .logo-block {
+
+          .jumbo-text-line {
+            font-family: 'Integral CF', sans-serif;
+            font-weight: bold;
+            font-size: 33.45px;
+            line-height: 1;
+            letter-spacing: 0;
+          }
+        }
+
+        .rte {
+
+          p {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0;
+            padding-right: 35px;
+          }
+        }
+      }
+
+      &:last-of-type {
+
+        .menu__heading {
+          font-family: 'Satoshi', sans-serif;
+          font-weight: 500;
+          font-size: 16px;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          line-height: 18px;
+        }
+
+        .menu__item {
+
+          a {
+            font-family: 'Satoshi', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: 0;
+          }
+        }
+      }
     }
   }
 }

@@ -5,6 +5,10 @@
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
 {% style %}
+  .ai-three-column {
+    margin-left: -24px;
+    margin-top: 16px;
+  }
   .ai-three-column-{{ ai_gen_id }} {
     display: block;
     width: {{ block.settings.desktop_width_percent }}%;
@@ -16,6 +20,22 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     width: 100%;
+  }
+
+  .ai-three-column__item h3 {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .ai-three-column__item p {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0;
   }
 
   .ai-three-column__item-{{ ai_gen_id }} {
@@ -58,19 +78,19 @@
   }
 {% endstyle %}
 
-<div class="ai-three-column-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+<div class="ai-three-column ai-three-column-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
   <div class="ai-three-column__container-{{ ai_gen_id }}">
-    <div class="ai-three-column__item-{{ ai_gen_id }}">
+    <div class="ai-three-column__item ai-three-column__item-{{ ai_gen_id }}">
       <h3 class="ai-three-column__header-{{ ai_gen_id }}">{{ block.settings.column_1_header }}</h3>
       <p class="ai-three-column__subtext-{{ ai_gen_id }}">{{ block.settings.column_1_subtext }}</p>
     </div>
 
-    <div class="ai-three-column__item-{{ ai_gen_id }}">
+    <div class="ai-three-column__item ai-three-column__item-{{ ai_gen_id }}">
       <h3 class="ai-three-column__header-{{ ai_gen_id }}">{{ block.settings.column_2_header }}</h3>
       <p class="ai-three-column__subtext-{{ ai_gen_id }}">{{ block.settings.column_2_subtext }}</p>
     </div>
 
-    <div class="ai-three-column__item-{{ ai_gen_id }}">
+    <div class="ai-three-column__item ai-three-column__item-{{ ai_gen_id }}">
       <h3 class="ai-three-column__header-{{ ai_gen_id }}">{{ block.settings.column_3_header }}</h3>
       <p class="ai-three-column__subtext-{{ ai_gen_id }}">{{ block.settings.column_3_subtext }}</p>
     </div>

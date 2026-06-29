@@ -44,7 +44,7 @@
           "settings": {
             "text": "<p>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>",
             "width": "fit-content",
-            "max_width": "normal",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
@@ -94,7 +94,7 @@
             "column_3_subtext": "Happy Customers",
             "desktop_width_percent": 100,
             "gap": 32,
-            "vertical_padding": 24,
+            "vertical_padding": 0,
             "text_alignment": "left",
             "border_width": 1,
             "border_color": "#dfdfdf",
@@ -133,9 +133,9 @@
         "align_baseline": true,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
+        "gap": 32,
         "section_width": "page-width",
-        "section_height": "custom",
+        "section_height": "full-screen",
         "section_height_custom": 90,
         "background_color": "rgba(0,0,0,0)",
         "toggle_overlay": false,
@@ -145,7 +145,7 @@
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 100,
-        "padding-block-end": 72
+        "padding-block-end": 100
       }
     },
     "17826860773450c36d": {
@@ -520,6 +520,21 @@
         "padding-block-end": 64
       }
     },
+    "divider_z3MNCk": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "background_color": "",
+        "divider_color": "#000000",
+        "section_width": "page-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "product_list_agjLcA": {
       "type": "product-list",
       "blocks": {
@@ -784,9 +799,9 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_pyAJnp": {
+            "text_QkG6zm": {
               "type": "text",
-              "name": "t:names.text",
+              "name": "t:names.heading",
               "settings": {
                 "text": "<h2><strong>BROWSE BY DRESS STYLE</strong></h2>",
                 "width": "fit-content",
@@ -794,7 +809,7 @@
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
-                "font_size": "",
+                "font_size": "1rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -804,7 +819,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 0,
-                "padding-block-end": 16,
+                "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -812,7 +827,7 @@
             }
           },
           "block_order": [
-            "text_pyAJnp"
+            "text_QkG6zm"
           ]
         },
         "static-collection-card": {
@@ -898,16 +913,16 @@
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
         "columns_gap": 8,
-        "bento_gap": 8,
+        "bento_gap": 20,
         "rows_gap": 8,
         "max_collections": 4,
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
-        "gap": 12,
-        "background_color": "#f0f0f0",
-        "padding-block-start": 24,
-        "padding-block-end": 24
+        "gap": 64,
+        "background_color": "#FFFFFF",
+        "padding-block-start": 70,
+        "padding-block-end": 70
       }
     }
   },
@@ -915,6 +930,7 @@
     "hero_jVaWmY",
     "17826860773450c36d",
     "product_list_zWDLxP",
+    "divider_z3MNCk",
     "product_list_agjLcA",
     "collection_list_Dfbn8Q"
   ]

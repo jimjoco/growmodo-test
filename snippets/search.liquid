@@ -10,24 +10,78 @@
 {%- enddoc -%}
 
 {% unless style == 'none' %}
-  <search-button
-    class="search-action{% if display_style == 'text' %} search-action--text{% endif %}{% if class != blank %} {{ class | strip }}{% endif %}"
-  >
-    <button
-      on:click="#search-modal/showDialog"
-      class="button-unstyled header-actions__action{% if display_style == 'text' %} header-actions__text-style{% endif %}"
+  <div class="search-action header-search-inline{% if class != blank %} {{ class | strip }}{% endif %}">
+    <predictive-search-component
+      class="predictive-search"
+      data-section-id="predictive-search"
+      role="search"
       aria-label="{{ 'content.search_input_label' | t }}"
-      aria-haspopup="dialog"
     >
-      <span class="{% if display_style == 'icon' %}hidden{% else %}mobile:hidden{% endif %}">
-        {{ 'content.search' | t }}
-      </span>
-
-      <span class="svg-wrapper {% if display_style != 'icon' %}desktop:hidden{% endif %}">
-        {{ 'icon-search.svg' | inline_asset_content }}
-      </span>
-    </button>
-  </search-button>
+      <form
+        action="{{ routes.search_url }}"
+        method="get"
+        role="search"
+        class="predictive-search-form"
+        ref="form"
+        on:keydown="/onSearchKeyDown"
+      >
+        <div class="predictive-search-form__header header-search-inline__header">
+          <div class="predictive-search-form__header-inner">
+            <label for="header-search-input" class="visually-hidden">
+              {{- 'content.search_input_label' | t -}}
+            </label>
+            <input
+              class="search-input"
+              id="header-search-input"
+              type="search"
+              name="q"
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results-inline"
+              aria-controls="predictive-search-results-inline"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocomplete="off"
+              placeholder="Search for products..."
+              ref="searchInput"
+              on:input="/search"
+              on:keydown="/onSearchKeyDown"
+            >
+            <input name="options[prefix]" type="hidden" value="last">
+            <span class="svg-wrapper predictive-search__icon">
+              {{ 'icon-svg-search.svg' | inline_asset_content }}
+            </span>
+            <button
+              type="button"
+              class="button-unstyled predictive-search__reset-button header-search-inline__reset"
+              ref="resetButton"
+              hidden
+              on:click="/resetSearch"
+            >
+              {{ 'actions.clear' | t }}
+            </button>
+          </div>
+        </div>
+        <div class="predictive-search-form__content-wrapper">
+          <div
+            class="predictive-search-form__content"
+            ref="predictiveSearchResults"
+            on:click="/handleModalClick"
+          >
+            {% render 'predictive-search-empty-state',
+              load_empty_state: false,
+              shadow_opacity: 0.1
+            %}
+          </div>
+          <div class="predictive-search-form__footer">
+            <button class="button predictive-search__search-button" ref="viewAllButton">
+              {{ 'content.search_results_view_all' | t }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </predictive-search-component>
+  </div>
 {% endunless %}
 
 {% stylesheet %}
@@ -37,6 +91,7 @@
 
     display: flex;
   }
+
 
   @media screen and (max-width: 749px) {
     .search-action--hidden-on-drawer {

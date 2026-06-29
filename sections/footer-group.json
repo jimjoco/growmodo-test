@@ -135,14 +135,14 @@
                 "heading_text_color": "",
                 "heading_preset": "h3",
                 "border_style": "all",
-                "input_style": "custom",
+                "input_style": "default",
                 "border_width": 1,
                 "border_radius": 62,
                 "input_background_color": "",
                 "input_text_color": "",
                 "input_border_color": "",
                 "input_type_preset": "paragraph",
-                "style_class": "button-secondary",
+                "style_class": "button",
                 "custom_button_background": "{{ settings.color_palette.foreground }}",
                 "custom_button_text": "{{ settings.color_palette.background }}",
                 "custom_button_border": "{{ settings.color_palette.background }}",
@@ -170,6 +170,7 @@
       ],
       "name": "t:names.email_signup",
       "settings": {
+        "section_class": "email-signup",
         "content_direction": "row",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
@@ -208,7 +209,7 @@
             "content_direction": "row",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
+            "vertical_alignment": "flex-start",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
@@ -509,6 +510,22 @@
     },
     "footer_utilities_jLGE8U": {
       "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_htBD9a": {
+          "type": "footer-copyright",
+          "name": "t:names.copyright",
+          "settings": {
+            "show_powered_by": true,
+            "text_color": "",
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_htBD9a"
+      ],
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",

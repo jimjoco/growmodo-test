@@ -19,9 +19,9 @@
   skip_contrast: skip_contrast
 %}
 
-<div class="section-background color-custom-{{ section_id }}"></div>
+<div class="section-background color-custom-{{ section_id }}{% if section.settings.section_class %} {{ section.settings.section_class }}{% endif %}"></div>
 <div
-  class="section section--{{ section.settings.section_width }} color-custom-{{ section_id }}"
+  class="section section--{{ section.settings.section_width }} color-custom-{{ section_id }}{% if section.settings.section_class %} {{ section.settings.section_class }}{% endif %}"
   data-testid="ui-test-section"
 
   {% if request.visual_preview_mode %}
